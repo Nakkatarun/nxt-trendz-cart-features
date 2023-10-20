@@ -1,7 +1,7 @@
 import './index.css'
 
-const SimilarProductItem = props => {
-  const {productDetails} = props
+const SimilarProductItem = props => {            // here we can select an item and according to the item also display the similar products 
+  const {productDetails} = props 
   const {title, brand, imageUrl, rating, price} = productDetails
 
   return (
