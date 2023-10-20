@@ -2,8 +2,8 @@ import {Link} from 'react-router-dom'
 import Header from '../Header'
 
 import './index.css'
-
-const Home = () => (
+  
+const Home = () => (    // home page here we can go products 
   <>
     <Header />
     <div className="home-container">
@@ -21,7 +21,7 @@ const Home = () => (
           that way you are. So, celebrate the seasons new and exciting fashion
           in your own way.
         </p>
-        <Link to="/products">
+        <Link to="/products">                               // navigate to products page 
           <button type="button" className="shop-now-button">
             Shop Now
           </button>
