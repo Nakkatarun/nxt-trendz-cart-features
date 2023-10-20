@@ -11,7 +11,7 @@ import SimilarProductItem from '../SimilarProductItem'
 
 import './index.css'
 
-const apiStatusConstants = {
+const apiStatusConstants = {               // maintain the product items view   
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
@@ -19,14 +19,14 @@ const apiStatusConstants = {
 }
 
 class ProductItemDetails extends Component {
-  state = {
+  state = {                                      // manage the state  according to the data
     productData: {},
     similarProductsData: [],
     apiStatus: apiStatusConstants.initial,
     quantity: 1,
   }
 
-  componentDidMount() {
+  componentDidMount() {                         // use component lift cycles to get the data using URL
     this.getProductData()
   }
 
@@ -51,7 +51,7 @@ class ProductItemDetails extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/products/${id}`
+    const apiUrl = `https://apis.ccbp.in/products/${id}`                                  // request to the server 
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -65,8 +65,8 @@ class ProductItemDetails extends Component {
       const updatedSimilarProductsData = fetchedData.similar_products.map(
         eachSimilarProduct => this.getFormattedData(eachSimilarProduct),
       )
-      this.setState({
-        productData: updatedData,
+      this.setState({                                                                 // change the state according to the fetch data
+        productData: updatedData,                                                  
         similarProductsData: updatedSimilarProductsData,
         apiStatus: apiStatusConstants.success,
       })
@@ -78,13 +78,13 @@ class ProductItemDetails extends Component {
     }
   }
 
-  renderLoadingView = () => (
+  renderLoadingView = () => (                                                                                 // loading view 
     <div className="products-details-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
-
-  renderFailureView = () => (
+ 
+  renderFailureView = () => (                                                                                      // failure view 
     <div className="product-details-error-view-container">
       <img
         alt="error view"
@@ -112,7 +112,7 @@ class ProductItemDetails extends Component {
   }
 
   renderProductDetailsView = () => (
-    <CartContext.Consumer>
+    <CartContext.Consumer>                                                                // use contect for to avod the prop drilling 
       {value => {
         const {productData, quantity, similarProductsData} = this.state
         const {
@@ -201,7 +201,7 @@ class ProductItemDetails extends Component {
     </CartContext.Consumer>
   )
 
-  renderProductDetails = () => {
+  renderProductDetails = () => {                                         // render the view based on the API status in URL resposne 
     const {apiStatus} = this.state
 
     switch (apiStatus) {
