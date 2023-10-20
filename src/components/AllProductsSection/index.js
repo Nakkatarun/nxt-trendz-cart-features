@@ -8,6 +8,8 @@ import ProductsHeader from '../ProductsHeader'
 
 import './index.css'
 
+//We select according to the category options
+
 const categoryOptions = [
   {
     name: 'Clothing',
@@ -30,6 +32,8 @@ const categoryOptions = [
     categoryId: '5',
   },
 ]
+
+// We can filter the products according to the criteria 
 
 const sortbyOptions = [
   {
@@ -65,6 +69,7 @@ const ratingsList = [
   },
 ]
 
+// maintain the all possible status 
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -72,7 +77,9 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
+
 class AllProductsSection extends Component {
+  // maintain the state according to the user actions
   state = {
     productsList: [],
     apiStatus: apiStatusConstants.initial,
@@ -86,6 +93,7 @@ class AllProductsSection extends Component {
     this.getProducts()
   }
 
+
   getProducts = async () => {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
@@ -97,6 +105,7 @@ class AllProductsSection extends Component {
       searchInput,
       activeRatingId,
     } = this.state
+    // to get the products data from via url
     const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`
     const options = {
       headers: {
@@ -128,10 +137,11 @@ class AllProductsSection extends Component {
 
   renderLoadingView = () => (
     <div className="products-loader-container">
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" /> // add loader for the specific span of time while fetching the data
     </div>
   )
-
+  
+// render the failure view
   renderFailureView = () => (
     <div className="products-error-view-container">
       <img
@@ -152,6 +162,7 @@ class AllProductsSection extends Component {
     this.setState({activeOptionId}, this.getProducts)
   }
 
+  // render products view 
   renderProductsListView = () => {
     const {productsList, activeOptionId} = this.state
     const shouldShowProductsList = productsList.length > 0
@@ -184,10 +195,11 @@ class AllProductsSection extends Component {
     )
   }
 
+
   renderAllProducts = () => {
     const {apiStatus} = this.state
 
-    switch (apiStatus) {
+    switch (apiStatus) {                // based on the API status we can change the view  here
       case apiStatusConstants.success:
         return this.renderProductsListView()
       case apiStatusConstants.failure:
