@@ -1,5 +1,6 @@
 import './index.css'
 
+// weather the user is out of the control the not found page will be displayed 
 const NotFound = () => (
   <div className="not-found-container">
     <img
