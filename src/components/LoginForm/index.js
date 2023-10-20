@@ -4,8 +4,8 @@ import {Redirect} from 'react-router-dom'
 
 import './index.css'
 
-class LoginForm extends Component {
-  state = {
+class LoginForm extends Component {             // login page here to verify whether the login user is valid or not 
+  state = {                                        // manage the state to collect the user details 
     username: '',
     password: '',
     showSubmitError: false,
@@ -23,7 +23,7 @@ class LoginForm extends Component {
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
 
-    Cookies.set('jwt_token', jwtToken, {
+    Cookies.set('jwt_token', jwtToken, {                   // here we can use the js-cookies for storing the jwt token 
       expires: 30,
     })
     history.replace('/')
@@ -38,11 +38,11 @@ class LoginForm extends Component {
     const {username, password} = this.state
     const userDetails = {username, password}
     const url = 'https://apis.ccbp.in/login'
-    const options = {
+    const options = {                                              // post the user details and get back whether user is valid or not 
       method: 'POST',
       body: JSON.stringify(userDetails),
     }
-    const response = await fetch(url, options)
+    const response = await fetch(url, options)                     // to request the user details 
     const data = await response.json()
     if (response.ok === true) {
       this.onSubmitSuccess(data.jwt_token)
@@ -76,7 +76,7 @@ class LoginForm extends Component {
 
     return (
       <>
-        <label className="input-label" htmlFor="username">
+        <label className="input-label" htmlFor="username">                    
           USERNAME
         </label>
         <input
@@ -111,7 +111,7 @@ class LoginForm extends Component {
           className="login-img"
           alt="website login"
         />
-        <form className="form-container" onSubmit={this.submitForm}>
+        <form className="form-container" onSubmit={this.submitForm}>                            // here we can use the form element to gatheing the user details 
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
             className="login-website-logo-desktop-img"
@@ -122,7 +122,7 @@ class LoginForm extends Component {
           <button type="submit" className="login-button">
             Login
           </button>
-          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
+          {showSubmitError && <p className="error-message">*{errorMsg}</p>}                     // shows the user is authorized or not 
         </form>
       </div>
     )
