@@ -11,7 +11,7 @@ const CartListView = () => (
       return (
         <ul className="cart-list">
           {cartList.map(eachCartItem => (
-            <CartItem key={eachCartItem.id} cartItemDetails={eachCartItem} />
+            <CartItem key={eachCartItem.id} cartItemDetails={eachCartItem} />     // cart items based on the cart list we can display 
           ))}
         </ul>
       )
