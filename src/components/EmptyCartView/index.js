@@ -2,6 +2,9 @@ import {Link} from 'react-router-dom'
 
 import './index.css'
 
+
+// here shows the if cart is empty then shows the cart view with no items 
+
 const EmptyCartView = () => (
   <div className="cart-empty-view-container">
     <img
