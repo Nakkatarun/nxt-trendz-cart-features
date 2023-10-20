@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom'
 
 import './index.css'
 
-const ProductCard = props => {
+const ProductCard = props => {                   // to display the product details like title, brand, image, rating, price in the card
   const {productData} = props
   const {title, brand, imageUrl, rating, price, id} = productData
 
