@@ -2,11 +2,14 @@ import {BsSearch} from 'react-icons/bs'
 
 import './index.css'
 
+
+// fiter the items here 
+
 const FiltersGroup = props => {
   const renderRatingsFiltersList = () => {
     const {ratingsList} = props
 
-    return ratingsList.map(rating => {
+    return ratingsList.map(rating => {    // according to the products rating
       const {changeRating, activeRatingId} = props
       const ratingClassName =
         activeRatingId === rating.ratingId ? `and-up active-rating` : `and-up`
@@ -39,7 +42,7 @@ const FiltersGroup = props => {
   const renderCategoriesList = () => {
     const {categoryOptions} = props
 
-    return categoryOptions.map(category => {
+    return categoryOptions.map(category => {    // according to the category 
       const {changeCategory, activeCategoryId} = props
       const onClickCategoryItem = () => changeCategory(category.categoryId)
       const isActive = category.categoryId === activeCategoryId
@@ -98,7 +101,7 @@ const FiltersGroup = props => {
   const {clearFilters} = props
 
   return (
-    <div className="filters-group-container">
+    <div className="filters-group-container">    // display the applied filtered items 
       {renderSearchInput()}
       {renderProductCategories()}
       {renderRatingsFilters()}
