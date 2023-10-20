@@ -5,8 +5,10 @@ import CartContext from '../../context/CartContext'
 
 import './index.css'
 
+
+// header of the application here we can add logo and options 
 const Header = props => {
-  const onClickLogout = () => {
+  const onClickLogout = () => {    // logout option to back in to the login page 
     const {history} = props
     Cookies.remove('jwt_token')
     history.replace('/login')
@@ -55,7 +57,7 @@ const Header = props => {
         </div>
 
         <div className="nav-bar-large-container">
-          <Link to="/">
+          <Link to="/">                              // here we use Link router for navigate with in the router 
             <img
               className="website-logo"
               src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
@@ -119,7 +121,7 @@ const Header = props => {
                 alt="nav cart"
                 className="nav-bar-img"
               />
-              {renderCartItemsCount()}
+              {renderCartItemsCount()}                           // display the number of items to be added to the cart 
             </Link>
           </li>
         </ul>
