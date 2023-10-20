@@ -5,6 +5,8 @@ import CartContext from '../../context/CartContext'
 
 import './index.css'
 
+
+// display the cart items, here we can select and remove the items from the cart
 const CartItem = props => (
   <CartContext.Consumer>
     {value => {
@@ -38,8 +40,8 @@ const CartItem = props => (
                 type="button"
                 onClick={onDeleteCartItem}
               >
-                Remove
-              </button>
+                Remove                    // remove cart button 
+              </button>     
             </div>
           </div>
           <button
