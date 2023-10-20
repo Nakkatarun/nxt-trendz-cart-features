@@ -2,7 +2,7 @@ import {BsFilterRight} from 'react-icons/bs'
 
 import './index.css'
 
-const ProductsHeader = props => {
+const ProductsHeader = props => {                                // here we can add the some criteria to the products 
   const {sortbyOptions, activeOptionId} = props
 
   const onChangeSortby = event => {
@@ -10,7 +10,7 @@ const ProductsHeader = props => {
     changeSortby(event.target.value)
   }
 
-  return (
+  return (                                                          
     <div className="products-header">
       <h1 className="products-list-heading">All Products</h1>
       <div className="sort-by-container">
